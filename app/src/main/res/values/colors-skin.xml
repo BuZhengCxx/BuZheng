@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--主色-->
+    <color name="skin_bgcolor1">#FFFF5F65</color>
+    <color name="skin_bgcolor2">#99FF5F65</color>
+    <!--首页底部dock-->
+    <color name="skin_docktxtcolor1">#FFFF5F65</color>
+    <color name="skin_docktxtcolor2">#FFD5CED0</color>
+
+    <!--button-->
+    <color name="skin_btnbgcolor1">#FFFF5F65</color>
+    <color name="skin_btnbgcolor2">#FFC0373C</color>
+    <color name="skin_btnbgcolor3">#FFE0D7D7</color>
+    <color name="skin_btnbgcolor4">#FFFFFFFF</color>
+    <color name="skin_btnbordcolor1">#FFFF5F65</color>
+    <color name="skin_btntxtcolor1">#FFFFFFFF</color>
+    <color name="skin_btntxtcolor2">#FFFF5F65</color>
+
+    <color name="skin_txtcolor1">#FFFF5F65</color>
+
+    <color name="skin_inputtxtcolor1">#FFD5CED0</color>
+    <color name="skin_inputtxtcolor2">#FF505050</color>
+
+    <color name="skin_acttxtcolor1">#FF777474</color>
+    <color name="skin_acttxtcolor2">#505050</color>
+
+    <!-- select box -->
+    <color name="skin_selectallcolor1">#FF505050</color>
+    <color name="skin_selectallcolor2">#FFFF5F65</color>
+
+    <!--自定义（视觉未规定，自己添加，比如换肤后设置某view的背景为透明达到隐藏的目的）-->
+    <color name="skin_topic_publish_bottom_divider_color">#FFF0F4F6</color>
+</resources>
