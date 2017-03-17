@@ -379,7 +379,11 @@ public class ViewManager {
         if (view == null || resId < 0) {
             return null;
         }
-        ViewSkinAttr viewSkinAttr = new ViewSkinAttr();
+        ViewSkinAttr viewSkinAttr = mViewAttrMap.get(view);
+        if (viewSkinAttr == null) {
+            viewSkinAttr = new ViewSkinAttr();
+        }
+
         viewSkinAttr.setSrcResId(resId);
         synchronized (mViewAttrMap) {
             mViewAttrMap.put(view, viewSkinAttr);
@@ -391,8 +395,41 @@ public class ViewManager {
         if (view == null || resId < 0) {
             return null;
         }
-        ViewSkinAttr viewSkinAttr = new ViewSkinAttr();
+        ViewSkinAttr viewSkinAttr = mViewAttrMap.get(view);
+        if (viewSkinAttr == null) {
+            viewSkinAttr = new ViewSkinAttr();
+        }
         viewSkinAttr.setTextColorResId(resId);
+        synchronized (mViewAttrMap) {
+            mViewAttrMap.put(view, viewSkinAttr);
+        }
+        return viewSkinAttr;
+    }
+
+    public ViewSkinAttr addTextDrawableLeft(View view, int resId) {
+        if (view == null || resId < 0) {
+            return null;
+        }
+        ViewSkinAttr viewSkinAttr = mViewAttrMap.get(view);
+        if (viewSkinAttr == null) {
+            viewSkinAttr = new ViewSkinAttr();
+        }
+        viewSkinAttr.setTextDrawableLeftResId(resId);
+        synchronized (mViewAttrMap) {
+            mViewAttrMap.put(view, viewSkinAttr);
+        }
+        return viewSkinAttr;
+    }
+
+    public ViewSkinAttr addTextDrawableRight(View view, int resId) {
+        if (view == null || resId < 0) {
+            return null;
+        }
+        ViewSkinAttr viewSkinAttr = mViewAttrMap.get(view);
+        if (viewSkinAttr == null) {
+            viewSkinAttr = new ViewSkinAttr();
+        }
+        viewSkinAttr.setTextDrawableRightResId(resId);
         synchronized (mViewAttrMap) {
             mViewAttrMap.put(view, viewSkinAttr);
         }
@@ -403,7 +440,10 @@ public class ViewManager {
         if (view == null || resId < 0) {
             return null;
         }
-        ViewSkinAttr viewSkinAttr = new ViewSkinAttr();
+        ViewSkinAttr viewSkinAttr = mViewAttrMap.get(view);
+        if (viewSkinAttr == null) {
+            viewSkinAttr = new ViewSkinAttr();
+        }
         viewSkinAttr.setBackgroundResId(resId);
         synchronized (mViewAttrMap) {
             mViewAttrMap.put(view, viewSkinAttr);

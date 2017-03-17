@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/title_bar"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/reader_common_top_title_height"
+    android:layout_height="@dimen/base_title_height"
     android:background="@color/bgcolor4">
 
     <ImageView
