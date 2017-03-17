@@ -31,7 +31,7 @@ public class ActivityDemoList extends BaseActivity {
 
         setContentView(R.layout.activity_demo_list_layout);
 
-        setTitle("Demoss");
+        setTitle("Demos");
 
         mListView = (ListView) this.findViewById(R.id.listview);
         mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mListItems));
@@ -40,8 +40,10 @@ public class ActivityDemoList extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int index = position - ((ListView) parent).getHeaderViewsCount();
-                Intent intent = new Intent(ActivityDemoList.this, mActvities[index]);
-                startActivity(intent);
+                if (index >= 0 && index < mActvities.length) {
+                    Intent intent = new Intent(ActivityDemoList.this, mActvities[index]);
+                    startActivity(intent);
+                }
             }
         });
 
