@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><!-- 返回键  标题  右边操作按钮-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/reader_common_top_title_height"
+    android:background="@color/bgcolor4">
+
+    <ImageView
+        android:id="@+id/title_back"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selector_common_title_back"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:src="@drawable/icon_back" />
+
+    <TextView
+        android:id="@+id/title_middle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="10dp"
+        android:layout_toRightOf="@+id/title_back"
+        android:gravity="center_vertical|left"
+        android:lines="1"
+        android:textColor="@color/txtcolor2"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/title_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:lines="1"
+        android:textColor="@color/txtcolor2"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/icon_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

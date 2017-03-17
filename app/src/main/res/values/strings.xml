@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BuZheng</string>
+    <!--common-->
+    <string name="load_fail_and_retry">点击屏幕，重新加载</string>
 </resources>

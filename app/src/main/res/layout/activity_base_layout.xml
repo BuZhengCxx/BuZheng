@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor2"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/view_title"
+        layout="@layout/view_common_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/base_title_height" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/linecolor1" />
+
+    <FrameLayout
+        android:id="@+id/layout_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ViewStub
+            android:id="@+id/view_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/view_common_base_loading" />
+
+        <ViewStub
+            android:id="@+id/view_error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/view_common_base_load_error" />
+
+        <ViewStub
+            android:id="@+id/view_no_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/view_common_base_no_content" />
+
+    </FrameLayout>
+</LinearLayout>
