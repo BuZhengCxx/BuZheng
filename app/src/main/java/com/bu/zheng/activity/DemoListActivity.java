@@ -14,12 +14,14 @@ import com.bu.zheng.R;
  * Created by BuZheng on 2017/3/17.
  */
 
-public class ActivityDemoList extends BaseActivity {
+public class DemoListActivity extends BaseActivity {
 
     static final String[] mListItems = {
+            "RichText"
     };
 
     static final Class<?>[] mActvities = {
+            RichTextActivity.class
     };
 
     private ListView mListView;
@@ -40,7 +42,7 @@ public class ActivityDemoList extends BaseActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int index = position - ((ListView) parent).getHeaderViewsCount();
                 if (index >= 0 && index < mActvities.length) {
-                    Intent intent = new Intent(ActivityDemoList.this, mActvities[index]);
+                    Intent intent = new Intent(DemoListActivity.this, mActvities[index]);
                     startActivity(intent);
                 }
             }

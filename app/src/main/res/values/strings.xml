@@ -2,4 +2,7 @@
     <string name="app_name">BuZheng</string>
     <!--common-->
     <string name="load_fail_and_retry">点击屏幕，重新加载</string>
+
+    <!--RichText-->
+    <string name="rich_text_test_str1">我的等级是[vip1]，标签1#漫画日本之旅#标签2#测试多个标签#的情况</string>
 </resources>
