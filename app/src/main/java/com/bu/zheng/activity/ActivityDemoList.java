@@ -20,7 +20,6 @@ public class ActivityDemoList extends BaseActivity {
     };
 
     static final Class<?>[] mActvities = {
-
     };
 
     private ListView mListView;
