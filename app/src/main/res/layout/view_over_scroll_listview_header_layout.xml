@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/top_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/over_scroll_listview_header_init_top_margin"
+        android:background="@android:color/transparent"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:paddingTop="100dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/first"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@android:color/transparent" />
+            <View
+                android:id="@+id/second"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/first"
+                android:background="@color/bgcolor3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/second"
+                android:background="@color/bgcolor3"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="用户名：buzheng"
+                    android:textColor="@color/txtcolor2"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:text="性别：男"
+                    android:textColor="@color/txtcolor2"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <com.bu.zheng.view.shape.CircularImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/default_avater_normal"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_below="@+id/top_container"
+        android:background="@color/linecolor1" />
+
+</RelativeLayout>

@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Tint -->
     <declare-styleable name="TintColor">
         <attr name="tint_drawable" format="integer" />
         <attr name="tint_color" format="color" />
         <attr name="tint_color_list" format="color" />
+    </declare-styleable>
+
+    <!-- rank ListView -->
+    <declare-styleable name="OverScrollListView">
+        <attr name="rank_top_margin" format="dimension" />
+    </declare-styleable>
+
+    <!-- shader ImageView -->
+    <declare-styleable name="ShaderImageView">
+        <attr name="shader_border_width" format="dimension" />
+        <attr name="shader_border_color" format="color" />
+        <attr name="shader_border_alpha" format="float" />
+        <attr name="shader_round_radius" format="dimension" />
+        <attr name="shader_round_ratio" format="float" />
+        <attr name="shader_shadow_color" format="color" />
     </declare-styleable>
 
 </resources>

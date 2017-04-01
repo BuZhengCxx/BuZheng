@@ -17,11 +17,13 @@ import com.bu.zheng.R;
 public class DemoListActivity extends BaseActivity {
 
     static final String[] mListItems = {
-            "RichText"
+            "RichText",
+            "OverScrollListView"
     };
 
     static final Class<?>[] mActvities = {
-            RichTextActivity.class
+            RichTextActivity.class,
+            OverScrollListActivity.class
     };
 
     private ListView mListView;

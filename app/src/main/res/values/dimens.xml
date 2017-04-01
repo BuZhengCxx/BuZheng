@@ -5,4 +5,7 @@
     <dimen name="common_top_title_height_exp_status_bar">56dp</dimen>
     <dimen name="common_top_title_height_exp_status_bar_exp_divider">55.5dp</dimen>
     <dimen name="common_top_title_height_top_padding">0dp</dimen>
+
+    <dimen name="over_scroll_listview_header_init_top_margin">48dp</dimen>
+    <dimen name="over_scroll_listview_header_image_height">260dp</dimen>
 </resources>
