@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_top_title_height">56dp</dimen>
+    <dimen name="common_top_title_height_with_status_bar">72dp</dimen>
+    <dimen name="common_top_title_height_exp_status_bar">48dp</dimen>
+    <dimen name="common_top_title_height_top_padding">24dp</dimen>
+</resources>

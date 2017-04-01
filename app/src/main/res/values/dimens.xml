@@ -1,3 +1,8 @@
 <resources>
-    <dimen name="base_title_height">48dp</dimen>
+    <!-- common title-->
+    <dimen name="common_top_title_height">48dp</dimen>
+    <dimen name="common_top_title_height_with_status_bar">56dp</dimen>
+    <dimen name="common_top_title_height_exp_status_bar">56dp</dimen>
+    <dimen name="common_top_title_height_exp_status_bar_exp_divider">55.5dp</dimen>
+    <dimen name="common_top_title_height_top_padding">0dp</dimen>
 </resources>

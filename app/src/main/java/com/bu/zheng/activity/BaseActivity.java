@@ -31,9 +31,8 @@ public abstract class BaseActivity extends Activity {
     private volatile View mNoContentView;
 
     private volatile View mTitleView;
-    protected volatile ImageView mTitleBack;
-    protected volatile TextView mTitleRight;
-    protected volatile ImageView mIconRight;
+    protected volatile ImageView mBack;
+    protected volatile TextView mTitleLeft;
 
     private LayoutInflater mLayoutInflater;
 
@@ -83,15 +82,14 @@ public abstract class BaseActivity extends Activity {
 
     private void initTitle() {
         mTitleView = findViewById(R.id.view_title);
-        mTitleBack = (ImageView) findViewById(R.id.title_back);
-        mTitleBack.setOnClickListener(new View.OnClickListener() {
+        mBack = (ImageView) findViewById(R.id.back);
+        mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        mTitleRight = (TextView) findViewById(R.id.title_right);
-        mIconRight = (ImageView) findViewById(R.id.icon_right);
+        mTitleLeft = (TextView) findViewById(R.id.title_left);
     }
 
     public void showLoadingView() {
@@ -195,23 +193,11 @@ public abstract class BaseActivity extends Activity {
     }
 
     public void setTitle(int resId) {
-        ((TextView) getTitleView().findViewById(R.id.title_middle)).setText(resId);
+        ((TextView) getTitleView().findViewById(R.id.title_left)).setText(resId);
     }
 
     public void setTitle(String title) {
-        ((TextView) getTitleView().findViewById(R.id.title_middle)).setText(title);
-    }
-
-    public void setTitleRight(int resId) {
-        mTitleRight = (TextView) getTitleView().findViewById(R.id.title_right);
-        mTitleRight.setVisibility(View.VISIBLE);
-        mTitleRight.setText(resId);
-    }
-
-    public void setTitleRight(String title) {
-        mTitleRight = (TextView) getTitleView().findViewById(R.id.title_right);
-        mTitleRight.setVisibility(View.VISIBLE);
-        mTitleRight.setText(title);
+        ((TextView) getTitleView().findViewById(R.id.title_left)).setText(title);
     }
 
     private AlertDialog mProgressDialog;

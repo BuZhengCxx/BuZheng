@@ -9,12 +9,7 @@
         android:id="@+id/view_title"
         layout="@layout/view_common_title_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/base_title_height" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:background="@color/linecolor1" />
+        android:layout_height="@dimen/common_top_title_height_with_status_bar" />
 
     <FrameLayout
         android:id="@+id/layout_root"
