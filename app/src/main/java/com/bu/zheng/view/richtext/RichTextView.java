@@ -13,7 +13,7 @@ public class RichTextView extends BaseRichTextView {
 
     private Context context;
 
-    RichTextClickListener mRichTextClickListener;
+    private RichTextClickListener mRichTextClickListener;
 
     /**
      * do this before setRichText
@@ -37,7 +37,7 @@ public class RichTextView extends BaseRichTextView {
             ImgTagManager.getInstance(context).setEmoticonSpan(sp, getTextSize());
 
         } else if (TextUtils.equals(regular, TopicTagSpan.REGULAR)) {
-            new TopicTagSpan(getContext(),sp.subSequence(start, end).toString(), mRichTextClickListener).setSpan(sp, start, end);
+            new TopicTagSpan(context,sp.subSequence(start, end).toString(), mRichTextClickListener).setSpan(sp, start, end);
         }
     }
 }
