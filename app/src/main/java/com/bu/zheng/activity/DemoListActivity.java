@@ -1,6 +1,7 @@
 package com.bu.zheng.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.bu.zheng.R;
+import com.bu.zheng.util.AndroidUtil;
 
 /**
  * Created by BuZheng on 2017/3/17.
@@ -32,11 +34,14 @@ public class DemoListActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        AndroidUtil.transparentStatusBar(this);
+
         setContentView(R.layout.activity_demo_list_layout);
 
         setTitle("Demos");
 
         mListView = (ListView) this.findViewById(R.id.listview);
+        mListView.setSelector(new BitmapDrawable(getResources()));
         mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mListItems));
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

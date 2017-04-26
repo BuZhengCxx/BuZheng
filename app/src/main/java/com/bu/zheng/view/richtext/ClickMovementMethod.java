@@ -81,8 +81,9 @@ public class ClickMovementMethod extends LinkMovementMethod {
                 }
                 return true;
 
-            } else {
+            } else if(action == MotionEvent.ACTION_UP){
                 Selection.removeSelection(buffer); // 取消选中效果
+                //响应点击事件
             }
         }
         return false;

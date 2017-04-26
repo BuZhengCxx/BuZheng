@@ -36,7 +36,7 @@ public class OverScrollListView extends ListView {
     private int mTopMargin;
     private static int MIN_TOP_MARGIN;
     private static int MAX_TOP_MARGIN;
-    private static final float FACTOR_PULL = 0.4f;
+    private static final float FACTOR_PULL = 0.3f;
     private static final long SPRIN_DURATION = 300;
     private static final float FACTOR_SCALE = 0.3f;
 
@@ -63,7 +63,7 @@ public class OverScrollListView extends ListView {
         mHeader = findViewById(R.id.header);
         mContainer = (LinearLayout) findViewById(R.id.top_container);
 
-        MAX_TOP_MARGIN = AndroidUtil.dip2px(mContext, 80) + MIN_TOP_MARGIN;
+        MAX_TOP_MARGIN = AndroidUtil.dip2px(mContext, 100) + MIN_TOP_MARGIN;
 
         mSprinAnimator = ValueAnimator.ofFloat(0f, 1f);
         mSprinAnimator.setDuration(SPRIN_DURATION);
@@ -124,7 +124,7 @@ public class OverScrollListView extends ListView {
         int dy = (int) (event.getY() - mLastY);
         switch (mState) {
             case STATE_NORMAL:
-                if (mHeader.getTop() == 0 && dy > 0) {
+                if (mHeader != null && mHeader.getTop() == 0 && dy > 0) {
                     mState = STATE_PULLING;
                     changeTopMargin(dy);
                     return true;

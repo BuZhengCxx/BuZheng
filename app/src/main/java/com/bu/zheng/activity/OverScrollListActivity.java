@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.bu.zheng.R;
 import com.bu.zheng.skin.ViewCompat;
+import com.bu.zheng.util.AndroidUtil;
 import com.bu.zheng.view.OverScrollListView;
 import com.bu.zheng.view.adapter.SimpleAdapter;
 
@@ -28,6 +29,9 @@ public class OverScrollListActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AndroidUtil.transparentStatusBar(this);
+
         setContentView(R.layout.activity_over_scroll_listview_layout);
 
         initViews();

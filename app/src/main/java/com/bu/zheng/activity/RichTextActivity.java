@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import com.bu.zheng.R;
+import com.bu.zheng.util.AndroidUtil;
 import com.bu.zheng.util.ToastUtil;
 import com.bu.zheng.view.richtext.BaseRichTextClickListener;
 import com.bu.zheng.view.richtext.RichTextView;
@@ -20,6 +21,8 @@ public class RichTextActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        AndroidUtil.transparentStatusBar(this);
 
         setContentView(R.layout.activity_rich_text_layout);
 
