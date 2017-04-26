@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/listview"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgcolor2" />
+    android:background="@color/bgcolor2"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/view_common_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_top_title_height" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bgcolor2" />
+</LinearLayout>

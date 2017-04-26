@@ -3,8 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor2"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/view_common_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_top_title_height" />
 
     <com.bu.zheng.view.richtext.RichTextView
         android:id="@+id/richtext1"

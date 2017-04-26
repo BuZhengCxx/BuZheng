@@ -4,19 +4,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
+import android.os.Parcelable;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewStub;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bu.zheng.R;
 import com.bu.zheng.skin.SkinViewFactory;
 import com.bu.zheng.util.AndroidUtil;
+
+import java.util.ArrayList;
 
 
 /**
@@ -24,15 +21,6 @@ import com.bu.zheng.util.AndroidUtil;
  */
 
 public abstract class BaseActivity extends Activity {
-
-    private FrameLayout mLayoutRoot;
-    private volatile View mLoadingView;
-    private volatile View mErrorView;
-    private volatile View mNoContentView;
-
-    private volatile View mTitleView;
-    protected volatile ImageView mBack;
-    protected volatile TextView mTitleLeft;
 
     private LayoutInflater mLayoutInflater;
 
@@ -42,162 +30,77 @@ public abstract class BaseActivity extends Activity {
         mLayoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mLayoutInflater.setFactory(new SkinViewFactory(this));
         super.onCreate(savedInstanceState);
+    }
 
-        super.setContentView(R.layout.activity_base_layout);
 
-        mLayoutRoot = (FrameLayout) findViewById(R.id.layout_root);
-
-        initTitle();
-        showLoadingView();
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
-    public void setContentView(@LayoutRes int layoutResID) {
-        View view = getLayoutInflater().inflate(layoutResID, mLayoutRoot, false);
-        mLayoutRoot.addView(view, 0);
+    protected void onPause() {
+        super.onPause();
     }
 
-    @Override
-    public void setContentView(View view) {
-        mLayoutRoot.addView(view, 0);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                break;
+    protected <T extends Parcelable> T getParcelableExtra(String name) {
+        try {
+            return getIntent().getParcelableExtra(name);
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
         }
-        return false;
+        return null;
     }
 
-    protected abstract void onReloadData();
-
-    public void onLoadFinished() {
-        hideErrorView();
-        hideLoadingView();
-        hideNoContentView();
-    }
-
-    private void initTitle() {
-        mTitleView = findViewById(R.id.view_title);
-        mBack = (ImageView) findViewById(R.id.back);
-        mBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        mTitleLeft = (TextView) findViewById(R.id.title_left);
-    }
-
-    public void showLoadingView() {
-        getLoadingView().setVisibility(View.VISIBLE);
-        hideErrorView();
-        hideNoContentView();
-    }
-
-    public void hideLoadingView() {
-        getLoadingView().setVisibility(View.GONE);
-    }
-
-    public void showErrorView() {
-        hideLoadingView();
-        hideNoContentView();
-        stopProgressDialog();
-        getErrorView().setVisibility(View.VISIBLE);
-    }
-
-    public void hideErrorView() {
-        getErrorView().setVisibility(View.GONE);
-    }
-
-    public void showNoContentView() {
-        hideLoadingView();
-        hideErrorView();
-        getNoContentView().setVisibility(View.VISIBLE);
-    }
-
-    public void showNoContentView(int strId) {
-        hideLoadingView();
-        hideErrorView();
-        getNoContentView().setVisibility(View.VISIBLE);
-        ((TextView) getNoContentView().findViewById(R.id.no_content_tip)).setText(strId);
-    }
-
-    public void hideNoContentView() {
-        getNoContentView().setVisibility(View.GONE);
-    }
-
-    private View getLoadingView() {
-        if (mLoadingView == null) {
-            synchronized (BaseActivity.class) {
-                if (mLoadingView == null) {
-                    ViewStub stub = (ViewStub) findViewById(R.id.view_loading);
-                    if (stub != null) {
-                        mLoadingView = stub.inflate();
-                    }
-                }
-            }
+    public <T extends Parcelable> ArrayList<T> getParcelableArrayListExtra(String name) {
+        try {
+            return getIntent().getParcelableArrayListExtra(name);
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
         }
-        return mLoadingView;
+        return null;
     }
 
-    private View getErrorView() {
-        if (mErrorView == null) {
-            synchronized (BaseActivity.class) {
-                if (mErrorView == null) {
-                    ViewStub stub = (ViewStub) findViewById(R.id.view_error);
-                    if (stub != null) {
-                        mErrorView = stub.inflate();
-                        mErrorView.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                showLoadingView();
-                                onReloadData();
-                            }
-                        });
-                    }
-                }
-            }
+    protected int getIntExtra(String name, int defaultValue) {
+        try {
+            return getIntent().getIntExtra(name, defaultValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
         }
-        return mErrorView;
+        return defaultValue;
     }
 
-    private View getNoContentView() {
-        if (mNoContentView == null) {
-            synchronized ((BaseActivity.class)) {
-                if (mNoContentView == null) {
-                    ViewStub stub = (ViewStub) findViewById(R.id.view_no_content);
-                    mNoContentView = stub.inflate();
-                }
-            }
+    protected long getLongExtra(String name, long defaultValue) {
+        try {
+            return getIntent().getLongExtra(name, defaultValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
         }
-        return mNoContentView;
+        return defaultValue;
     }
 
-    private View getTitleView() {
-        if (mTitleView == null) {
-            synchronized ((BaseActivity.class)) {
-                if (mTitleView == null) {
-                    mTitleView = findViewById(R.id.view_title);
-                }
-            }
+    public String getStringExtra(String name) {
+        try {
+            return getIntent().getStringExtra(name);
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
         }
-        return mTitleView;
+        return null;
     }
 
-    public void hideTitle() {
-        getTitleView().setVisibility(View.GONE);
-    }
-
-    public void setTitle(int resId) {
-        ((TextView) getTitleView().findViewById(R.id.title_left)).setText(resId);
-    }
-
-    public void setTitle(String title) {
-        ((TextView) getTitleView().findViewById(R.id.title_left)).setText(title);
+    public boolean getBooleanExtra(String name, boolean defaultValue) {
+        try {
+            return getIntent().getBooleanExtra(name, defaultValue);
+        } catch (Exception e) {
+            e.printStackTrace();
+            finish();
+        }
+        return defaultValue;
     }
 
     private AlertDialog mProgressDialog;

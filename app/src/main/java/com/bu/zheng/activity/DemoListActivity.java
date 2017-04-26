@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.bu.zheng.R;
 import com.bu.zheng.util.AndroidUtil;
@@ -28,6 +30,9 @@ public class DemoListActivity extends BaseActivity {
             OverScrollListActivity.class
     };
 
+    private ImageView mTitleBack;
+    private TextView mTitleLeft;
+
     private ListView mListView;
 
     @Override
@@ -38,7 +43,16 @@ public class DemoListActivity extends BaseActivity {
 
         setContentView(R.layout.activity_demo_list_layout);
 
-        setTitle("Demos");
+        mTitleBack = (ImageView) findViewById(R.id.title_back);
+        mTitleLeft = (TextView) findViewById(R.id.title_left);
+        mTitleLeft.setText("Demos");
+        mTitleBack.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         mListView = (ListView) this.findViewById(R.id.listview);
         mListView.setSelector(new BitmapDrawable(getResources()));
@@ -54,12 +68,6 @@ public class DemoListActivity extends BaseActivity {
                 }
             }
         });
-
-        onLoadFinished();
-    }
-
-    @Override
-    protected void onReloadData() {
 
     }
 }
