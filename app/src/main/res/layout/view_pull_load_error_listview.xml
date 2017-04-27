@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/pulllist_nonetwork_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="13dp"
+        android:src="@drawable/pub_img_empty_failure" />
+
+    <TextView
+        android:id="@+id/pulllist_error_text"
+        android:textSize="12sp"
+        android:textColor="@color/txtcolor4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/common_load_fail" />
+
+    <com.netease.cartoonreader.view.skin.SkinTextView
+        android:id="@+id/pulllist_error_text2"
+        android:textColor="@color/btn_txtcolor1"
+        android:textSize="14sp"
+        android:layout_width="113dp"
+        android:layout_height="@dimen/empty_btn_height"
+        android:layout_marginTop="@dimen/empty_margin_between_text_and_btn"
+        android:background="@drawable/skin_selector_load_page_tip_bg"
+        android:gravity="center"
+        android:text="@string/common_load_fail_reload" />
+</LinearLayout>

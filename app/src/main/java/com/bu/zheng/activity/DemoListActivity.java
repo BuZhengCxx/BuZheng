@@ -22,12 +22,16 @@ public class DemoListActivity extends BaseActivity {
 
     static final String[] mListItems = {
             "RichText",
-            "OverScrollListView"
+            "OverScrollListView",
+            "PullToRefresh",
+            "VideoAutoPlayList"
     };
 
     static final Class<?>[] mActvities = {
             RichTextActivity.class,
-            OverScrollListActivity.class
+            OverScrollListActivity.class,
+            PullToRefreshActivity.class,
+            VideoAutoPlayListActivity.class
     };
 
     private ImageView mTitleBack;

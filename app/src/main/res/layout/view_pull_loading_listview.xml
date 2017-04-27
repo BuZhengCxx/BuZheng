@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <ImageView
+            android:id="@+id/anim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/pub_loading_deer1" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/pulllist_loading_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:singleLine="true"
+        android:text="@string/common_loading_2"
+        android:textColor="@color/txtcolor4"
+        android:textSize="14sp" />
+
+    <com.netease.cartoonreader.view.skin.SkinTextView
+        android:id="@+id/pulllist_nonetwork_text2"
+        android:layout_width="113dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/skin_selector_load_page_tip_bg"
+        android:gravity="center"
+        android:text="@string/common_load_fail_reload"
+        android:textColor="@color/btn_txtcolor1"
+        android:textSize="14sp"
+        android:visibility="invisible" />
+</LinearLayout>

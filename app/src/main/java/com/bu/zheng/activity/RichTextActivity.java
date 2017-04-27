@@ -31,8 +31,6 @@ public class RichTextActivity extends BaseActivity {
 
         setContentView(R.layout.activity_rich_text_layout);
 
-        setTitle("RichText");
-
         initViews();
     }
 

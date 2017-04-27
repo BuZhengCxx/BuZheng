@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="recyclerview" />
+    <item type="id" name="observable_recyclerview" />
+    <item type="id" name="scrollview" />
+    <item type="id" name="relativelayout" />
+    <item type="id" name="tiframelayout" />
+</resources>
