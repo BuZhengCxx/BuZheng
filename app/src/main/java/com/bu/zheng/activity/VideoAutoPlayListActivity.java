@@ -15,7 +15,7 @@ import com.bu.zheng.R;
 import com.bu.zheng.skin.ViewCompat;
 import com.bu.zheng.util.AndroidUtil;
 import com.bu.zheng.view.OverScrollListView;
-import com.bu.zheng.view.adapter.SimpleAdapter;
+import com.bu.zheng.view.adapter.SimpleListAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,7 @@ public class VideoAutoPlayListActivity extends Activity {
     private int mTopWidth;
     private int mTopHeight;
 
-    private SimpleAdapter mAdapter;
+    private SimpleListAdapter mAdapter;
 
     private static List<String> mData = new ArrayList<>();
 
@@ -88,7 +88,7 @@ public class VideoAutoPlayListActivity extends Activity {
         mListHeader = View.inflate(this, R.layout.view_over_scroll_listview_header_layout, null);
         mOverScrollListView.addHeaderView(mListHeader);
 
-        mAdapter = new SimpleAdapter(this, mData);
+        mAdapter = new SimpleListAdapter(this, mData);
         mOverScrollListView.setAdapter(mAdapter);
     }
 

@@ -3,9 +3,7 @@ package com.bu.zheng.view.pulltorefresh.common;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
-import android.text.TextUtils;
 import android.util.AttributeSet;
-
 import com.bu.zheng.R;
 import com.bu.zheng.view.pulltorefresh.library.IRecyclerFooter;
 
@@ -119,6 +117,7 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
     public void onRefreshComplete(boolean hasMore) {
         onRefreshComplete();
         mHasMore = hasMore;
+        setHasMore(hasMore);
         if (!mHasMore) {
             hideFooterView();
         } else {
@@ -126,43 +125,9 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
         }
     }
 
-    public void onRefreshComplete(Object hasMore) {
-        if (hasMore == null) {
-            onRefreshComplete(false);
-            return;
-        }
-
-        if (hasMore instanceof Boolean) {
-            mHasMore = (Boolean) hasMore;
-        }
-
-        if (hasMore instanceof String) {
-            mHasMore = !TextUtils.isEmpty((String) hasMore);
-        }
-
-        onRefreshComplete(mHasMore);
-    }
-
-
-    public void onLoadingComplete(Object hasMore) {
-        if (hasMore == null) {
-            onLoadingComplete(false);
-            return;
-        }
-
-        if (hasMore instanceof Boolean) {
-            mHasMore = (Boolean) hasMore;
-        }
-
-        if (hasMore instanceof String) {
-            mHasMore = !TextUtils.isEmpty((String) hasMore);
-        }
-
-        onLoadingComplete(mHasMore);
-    }
-
     public void onLoadingComplete(boolean hasMore) {
         mHasMore = hasMore;
+        setHasMore(hasMore);
         if (!mHasMore) {
             hideFooterView();
         } else {
@@ -177,6 +142,12 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
 
     public void disablePullToRefresh() {
         mPullToRefreshEnable = false;
+    }
+
+    private void setHasMore(boolean hasMore){
+        if(getAdapter() != null){
+            getAdapter().setHasMore(hasMore);
+        }
     }
 
     private void hideFooterView() {

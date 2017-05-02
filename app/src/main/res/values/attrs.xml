@@ -62,6 +62,10 @@
         <attr name="rank_top_margin" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="OverScrollRecyclerView">
+        <attr name="top_margin" format="dimension" />
+    </declare-styleable>
+
     <!-- shader ImageView -->
     <declare-styleable name="ShaderImageView">
         <attr name="shader_border_width" format="dimension" />

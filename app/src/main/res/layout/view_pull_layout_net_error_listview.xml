@@ -27,7 +27,7 @@
     <com.netease.cartoonreader.view.skin.SkinTextView
         android:id="@+id/pulllist_nonetwork_text2"
         android:layout_width="113dp"
-        android:layout_height="@dimen/empty_btn_height"
+        android:layout_height="36dp"
         android:background="@drawable/skin_selector_load_page_tip_bg"
         android:gravity="center"
         android:textSize="14sp"

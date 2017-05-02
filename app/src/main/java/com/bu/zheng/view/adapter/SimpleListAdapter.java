@@ -13,9 +13,9 @@ import java.util.List;
  * Created by BuZheng on 2017/4/1.
  */
 
-public class SimpleAdapter extends BaseListAdapter<String> {
+public class SimpleListAdapter extends BaseListAdapter<String> {
 
-    public SimpleAdapter(Context context, List<String> data) {
+    public SimpleListAdapter(Context context, List<String> data) {
         super(context, data);
     }
 

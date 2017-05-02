@@ -5,6 +5,8 @@ package com.bu.zheng.view.pulltorefresh.library;
  */
 public interface IRecyclerFooter {
 
+    void setHasMore(boolean hasMore);
+
     void hideFooterView();
 
     void showFooterView();

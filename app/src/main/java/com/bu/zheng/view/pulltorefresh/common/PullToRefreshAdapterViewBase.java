@@ -30,8 +30,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 
-import com.netease.cartoonreader.widget.pulltorefresh.library.EmptyViewMethodAccessor;
-import com.netease.image.display.ImageDisplayer;
+import com.bu.zheng.view.pulltorefresh.library.EmptyViewMethodAccessor;
 
 public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extends PullToRefreshBase<T> implements
         OnScrollListener {
@@ -98,16 +97,16 @@ public abstract class PullToRefreshAdapterViewBase<T extends AbsListView> extend
 
         switch (state) {
             case OnScrollListener.SCROLL_STATE_IDLE:
-                ImageDisplayer.resumeRequests(view.getContext());
+                //ImageDisplayer.resumeRequests(view.getContext());
                 if (mOnLastItemVisibleListener != null && mLastItemVisible) {
                     mOnLastItemVisibleListener.onLastItemVisible();
                 }
                 break;
             case OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
-                ImageDisplayer.resumeRequests(view.getContext());
+                //ImageDisplayer.resumeRequests(view.getContext());
                 break;
             default:
-                ImageDisplayer.pauseRequests(view.getContext());
+                //ImageDisplayer.pauseRequests(view.getContext());
                 break;
         }
 

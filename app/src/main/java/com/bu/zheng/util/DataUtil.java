@@ -1,5 +1,8 @@
 package com.bu.zheng.util;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by BuZheng on 2017/4/27.
  */
@@ -87,4 +90,12 @@ public class DataUtil {
             "https://easyread.nosdn.127.net/pic20160301d893fff7c46d443f9462ed9a3d6e7b0c.jpeg"
     };
 
+    public static List<String> getStringListData(int count, int startIndex) {
+        List<String> data = new ArrayList<>();
+        for (int index = 0; index < count; index++) {
+            data.add("Test String " + startIndex);
+            startIndex++;
+        }
+        return data;
+    }
 }

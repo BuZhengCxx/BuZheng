@@ -27,8 +27,8 @@
         android:textColor="@color/btn_txtcolor1"
         android:textSize="14sp"
         android:layout_width="113dp"
-        android:layout_height="@dimen/empty_btn_height"
-        android:layout_marginTop="@dimen/empty_margin_between_text_and_btn"
+        android:layout_height="36dp"
+        android:layout_marginTop="27dp"
         android:background="@drawable/skin_selector_load_page_tip_bg"
         android:gravity="center"
         android:text="@string/common_load_fail_reload" />
