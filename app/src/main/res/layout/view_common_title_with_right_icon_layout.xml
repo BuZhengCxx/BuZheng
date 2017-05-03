@@ -29,6 +29,7 @@
         android:id="@+id/title_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:src="@drawable/top_ic48_more"
         android:gravity="center"
         android:paddingLeft="16dp"
         android:paddingRight="16dp" />

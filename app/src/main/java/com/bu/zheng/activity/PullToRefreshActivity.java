@@ -77,7 +77,7 @@ public class PullToRefreshActivity extends BaseActivity {
                     break;
 
                 case R.id.title_right:
-
+                    mRecyclerView.demo();
                     break;
             }
         }

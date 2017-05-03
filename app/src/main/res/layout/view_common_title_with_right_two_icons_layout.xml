@@ -41,8 +41,7 @@
             android:background="@drawable/selector_detail_alpha8_bg"
             android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/top_ic48_more"
-            android:visibility="gone" />
+            android:src="@drawable/top_ic48_more"/>
 
         <ImageView
             android:id="@+id/title_right_1"
@@ -52,8 +51,7 @@
             android:background="@drawable/selector_detail_alpha8_bg"
             android:gravity="center"
             android:scaleType="centerInside"
-            android:src="@drawable/top_ic48_download"
-            android:visibility="gone" />
+            android:src="@drawable/top_ic48_download"/>
 
 
     </LinearLayout>
