@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.AttributeSet;
+
 import com.bu.zheng.R;
 import com.bu.zheng.view.pulltorefresh.library.IRecyclerFooter;
 
@@ -68,7 +69,7 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
             return false;
         }
         if (mLayoutManager == null) {
-            return true;
+            return false;
         }
         return mLayoutManager.isAtTop();
     }
@@ -93,7 +94,9 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
             super.onScrolled(recyclerView, dx, dy);
 
-            mLayoutManager = (ILayoutManager) recyclerView.getLayoutManager();
+            if (mLayoutManager == null) {
+                mLayoutManager = (ILayoutManager) recyclerView.getLayoutManager();
+            }
 
             if (mPullToLoadMoreEnable && mHasMore && mLayoutManager.isAtBottom() && mOnLoadingListener != null) {
                 mOnLoadingListener.onLoadMore();
@@ -144,8 +147,8 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
         mPullToRefreshEnable = false;
     }
 
-    private void setHasMore(boolean hasMore){
-        if(getAdapter() != null){
+    private void setHasMore(boolean hasMore) {
+        if (getAdapter() != null) {
             getAdapter().setHasMore(hasMore);
         }
     }
@@ -188,6 +191,7 @@ public class PullToRefreshRecyclerView extends PullToRefreshBase<RecyclerView> {
     }
 
     public void setLayoutManager(RecyclerView.LayoutManager manager) {
+        mLayoutManager = (ILayoutManager) manager;
         mRefreshableView.setLayoutManager(manager);
     }
 

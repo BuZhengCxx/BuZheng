@@ -20,7 +20,7 @@ public class PullGridLayoutManager extends GridLayoutManager implements ILayoutM
     @Override
     public boolean isAtTop() {
         if (getItemCount() == 0) {
-            return true;
+            return false;
         }
         //the recyclerview is at top position or not
         if (findViewByPosition(0) != null

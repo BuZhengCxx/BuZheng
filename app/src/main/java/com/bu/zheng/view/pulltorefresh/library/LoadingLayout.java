@@ -163,15 +163,12 @@ public abstract class LoadingLayout extends FrameLayout implements ILoadingLayou
             mHeaderText.setText(mRefreshingLabel);
         }
         if (mUseIntrinsicAnimation) {
-            // 使用固有的动画方式
-            // AnimationDrawable 形式的动画
             ((AnimationDrawable) mHeaderImage.getDrawable()).start();
         } else {
-            // 使用特定的动画方式
             refreshingImpl();
         }
 
-        if (null != mSubHeaderText) {
+        if (mSubHeaderText != null) {
             mSubHeaderText.setVisibility(View.GONE);
         }
     }

@@ -45,7 +45,7 @@ public class PullToRefreshActivity extends BaseActivity {
     }
 
     private void initViews() {
-        mData = DataUtil.getStringListData(20, 0);
+        mData = DataUtil.getStringListData(0, 0);
 
         mTitleBack = (ImageView) findViewById(R.id.title_back);
         mTitleLeft = (TextView) findViewById(R.id.title_left);
@@ -77,7 +77,7 @@ public class PullToRefreshActivity extends BaseActivity {
                     break;
 
                 case R.id.title_right:
-                    mRecyclerView.demo();
+                    mRecyclerView.autoFresh();
                     break;
             }
         }
