@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bu.zheng.R;
 import com.bu.zheng.util.DataUtil;
@@ -22,6 +24,10 @@ import java.util.List;
  */
 
 public class PullToRefreshActivity extends BaseActivity {
+
+    private ImageView mTitleBack;
+    private TextView mTitleLeft;
+    private ImageView mTitleRight;
 
     private PullToRefreshRecyclerView mRecyclerView;
 
@@ -41,6 +47,13 @@ public class PullToRefreshActivity extends BaseActivity {
     private void initViews() {
         mData = DataUtil.getStringListData(20, 0);
 
+        mTitleBack = (ImageView) findViewById(R.id.title_back);
+        mTitleLeft = (TextView) findViewById(R.id.title_left);
+        mTitleLeft.setText("PullToRefresh");
+        mTitleBack.setOnClickListener(mOnClickListener);
+        mTitleRight = (ImageView) findViewById(R.id.title_right);
+        mTitleRight.setOnClickListener(mOnClickListener);
+
         mRecyclerView = (PullToRefreshRecyclerView) findViewById(R.id.recyclerview);
         initRecyclerView();
     }
@@ -53,6 +66,22 @@ public class PullToRefreshActivity extends BaseActivity {
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.onRefreshComplete(false);
     }
+
+    private View.OnClickListener mOnClickListener = new View.OnClickListener() {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.title_left:
+                    finish();
+                    break;
+
+                case R.id.title_right:
+
+                    break;
+            }
+        }
+    };
 
     class DividerItemDecorator extends RecyclerView.ItemDecoration {
 

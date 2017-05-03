@@ -12,7 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bu.zheng.R;
-import com.bu.zheng.view.pulltorefresh.common.PullToRefreshBase;
+import com.bu.zheng.view.pulltorefresh.common.Mode;
+import com.bu.zheng.view.pulltorefresh.common.Orientation;
 
 /**
  * Created by chenxiaoxiong on 16/7/8.
@@ -24,32 +25,32 @@ public class ComicLoadingLayout3 extends LoadingLayout {
     private TextView mPullTip;
     private boolean mHasBanner;
 
-    public ComicLoadingLayout3(Context context, PullToRefreshBase.Mode mode,
-                               PullToRefreshBase.Orientation scrollDirection,
+    public ComicLoadingLayout3(Context context, Mode mode,
+                               Orientation scrollDirection,
                                TypedArray attrs) {
         super(context, mode, scrollDirection, attrs);
     }
 
-    protected void initLayout(Context context, PullToRefreshBase.Mode mode, PullToRefreshBase.Orientation scrollDirection, TypedArray attrs) {
+    protected void initLayout(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
 
         mInnerLayout = (RelativeLayout) findViewById(R.id.fl_inner);
         mHeaderImage = (ImageView) mInnerLayout.findViewById(R.id.pull_to_refresh_image);
 
         //extra
-        mBannerLayout = (RelativeLayout)mInnerLayout.findViewById(R.id.banner_layout);
+        mBannerLayout = (RelativeLayout) mInnerLayout.findViewById(R.id.banner_layout);
         mBannerImage = (ImageView) mInnerLayout.findViewById(R.id.pull_to_refresh_image_2);
-        mPullTip = (TextView)mInnerLayout.findViewById(R.id.pull_tip);
+        mPullTip = (TextView) mInnerLayout.findViewById(R.id.pull_tip);
 
         LayoutParams lp = (LayoutParams) mInnerLayout.getLayoutParams();
 
         switch (mode) {
             case PULL_FROM_END:
-                lp.gravity = scrollDirection == PullToRefreshBase.Orientation.VERTICAL ? Gravity.TOP : Gravity.LEFT;
+                lp.gravity = scrollDirection == Orientation.VERTICAL ? Gravity.TOP : Gravity.LEFT;
                 break;
 
             case PULL_FROM_START:
             default:
-                lp.gravity = scrollDirection == PullToRefreshBase.Orientation.VERTICAL ? Gravity.BOTTOM : Gravity.RIGHT;
+                lp.gravity = scrollDirection == Orientation.VERTICAL ? Gravity.BOTTOM : Gravity.RIGHT;
                 break;
         }
 

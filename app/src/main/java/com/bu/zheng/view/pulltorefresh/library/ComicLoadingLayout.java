@@ -9,18 +9,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.bu.zheng.R;
-import com.bu.zheng.view.pulltorefresh.common.PullToRefreshBase;
+import com.bu.zheng.view.pulltorefresh.common.Mode;
+import com.bu.zheng.view.pulltorefresh.common.Orientation;
 
 /**
  * Created by chenxiaoxiong on 15/5/12.
  */
 public class ComicLoadingLayout extends LoadingLayout {
 
-    public ComicLoadingLayout(Context context, PullToRefreshBase.Mode mode, PullToRefreshBase.Orientation scrollDirection, TypedArray attrs) {
+    public ComicLoadingLayout(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
         super(context, mode, scrollDirection, attrs);
     }
 
-    protected void initLayout(Context context, PullToRefreshBase.Mode mode, PullToRefreshBase.Orientation scrollDirection, TypedArray attrs) {
+    protected void initLayout(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
         mInnerLayout = (RelativeLayout) findViewById(R.id.fl_inner);
         mHeaderImage = (ImageView) mInnerLayout.findViewById(R.id.pull_to_refresh_image);
 
@@ -28,12 +29,12 @@ public class ComicLoadingLayout extends LoadingLayout {
 
         switch (mode) {
             case PULL_FROM_END:
-                lp.gravity = scrollDirection == PullToRefreshBase.Orientation.VERTICAL ? Gravity.TOP : Gravity.LEFT;
+                lp.gravity = scrollDirection == Orientation.VERTICAL ? Gravity.TOP : Gravity.LEFT;
                 break;
 
             case PULL_FROM_START:
             default:
-                lp.gravity = scrollDirection == PullToRefreshBase.Orientation.VERTICAL ? Gravity.BOTTOM : Gravity.RIGHT;
+                lp.gravity = scrollDirection == Orientation.VERTICAL ? Gravity.BOTTOM : Gravity.RIGHT;
                 break;
         }
 

@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recyclerview"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgcolor2"
-    android:overScrollMode="never">
+    android:orientation="vertical">
 
-</com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView>
+    <include
+        layout="@layout/view_common_title_with_right_icon_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_top_title_height" />
+
+    <com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never">
+
+    </com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView>
+</LinearLayout>

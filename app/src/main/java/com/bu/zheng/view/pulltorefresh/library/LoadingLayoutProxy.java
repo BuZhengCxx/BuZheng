@@ -1,6 +1,5 @@
 package com.bu.zheng.view.pulltorefresh.library;
 
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 import java.util.HashSet;
@@ -10,7 +9,7 @@ public class LoadingLayoutProxy implements ILoadingLayout {
 	private final HashSet<LoadingLayout> mLoadingLayouts;
 
 	public LoadingLayoutProxy() {
-		mLoadingLayouts = new HashSet<LoadingLayout>();
+		mLoadingLayouts = new HashSet<>();
 	}
 
 	/**
@@ -59,13 +58,6 @@ public class LoadingLayoutProxy implements ILoadingLayout {
 	public void setReleaseLabel(CharSequence label) {
 		for (LoadingLayout layout : mLoadingLayouts) {
 			layout.setReleaseLabel(label);
-		}
-	}
-
-	@Override
-    public void setTextTypeface(Typeface tf) {
-		for (LoadingLayout layout : mLoadingLayouts) {
-			layout.setTextTypeface(tf);
 		}
 	}
 }

@@ -1,6 +1,5 @@
 package com.bu.zheng.view.pulltorefresh.library;
 
-import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 
 public interface ILoadingLayout {
@@ -45,13 +44,4 @@ public interface ILoadingLayout {
      * @param releaseLabel - CharSequence to display
      */
     void setReleaseLabel(CharSequence releaseLabel);
-
-    /**
-     * Set's the Sets the typeface and style in which the text should be
-     * displayed. Please see
-     * {@link android.widget.TextView#setTypeface(android.graphics.Typeface)
-     * TextView#setTypeface(Typeface)}.
-     */
-    void setTextTypeface(Typeface tf);
-
 }
