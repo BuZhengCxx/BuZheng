@@ -72,7 +72,7 @@ public class PullToRefreshActivity extends BaseActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.title_left:
+                case R.id.title_back:
                     finish();
                     break;
 
