@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -13,11 +14,18 @@ import com.bu.zheng.view.pulltorefresh.common.Mode;
 import com.bu.zheng.view.pulltorefresh.common.Orientation;
 
 /**
- * Created by chenxiaoxiong on 15/5/12.
+ * Created by chenxiaoxiong on 16/7/8.
  */
-public class ComicLoadingLayout extends LoadingLayout {
+public class CustomLoadingLayout2 extends LoadingLayout {
 
-    public ComicLoadingLayout(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
+    private static int[] mPullDrawables = new int[]{
+            R.drawable.img_pull1,
+            R.drawable.img_pull2,
+            R.drawable.img_pull3,
+            R.drawable.img_pull4
+    };
+
+    public CustomLoadingLayout2(Context context, Mode mode, Orientation scrollDirection, TypedArray attrs) {
         super(context, mode, scrollDirection, attrs);
     }
 
@@ -25,7 +33,7 @@ public class ComicLoadingLayout extends LoadingLayout {
         mInnerLayout = (RelativeLayout) findViewById(R.id.fl_inner);
         mHeaderImage = (ImageView) mInnerLayout.findViewById(R.id.pull_to_refresh_image);
 
-        LayoutParams lp = (LayoutParams) mInnerLayout.getLayoutParams();
+        FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) mInnerLayout.getLayoutParams();
 
         switch (mode) {
             case PULL_FROM_END:
@@ -58,6 +66,9 @@ public class ComicLoadingLayout extends LoadingLayout {
 
     @Override
     protected void onPullImpl(float scaleOfLayout) {
+//        //原来有10张，未改
+//        int index = (int) (scaleOfLayout * 10) >= 10 ? 10 : (int) (scaleOfLayout * 10);
+//        mHeaderImage.setImageDrawable(mContext.getResources().getDrawable(mPullDrawables[index]));
     }
 
     @Override
@@ -67,10 +78,7 @@ public class ComicLoadingLayout extends LoadingLayout {
 
     @Override
     protected void refreshingImpl() {
-        mHeaderImage.clearAnimation();
-        mHeaderImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.list_release_anim));
-        AnimationDrawable anim = (AnimationDrawable) mHeaderImage.getDrawable();
-        anim.start();
+        mHeaderImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.img_pull1));
     }
 
     @Override
@@ -80,7 +88,11 @@ public class ComicLoadingLayout extends LoadingLayout {
 
     @Override
     protected int refreshCompleteImpl() {
-        return 400;
+        mHeaderImage.clearAnimation();
+        mHeaderImage.setImageDrawable(mContext.getResources().getDrawable(R.drawable.list_release_anim));
+        AnimationDrawable anim = (AnimationDrawable) mHeaderImage.getDrawable();
+        anim.start();
+        return 1000;
     }
 
     @Override

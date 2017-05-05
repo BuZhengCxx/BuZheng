@@ -36,6 +36,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bu.zheng.R;
+import com.bu.zheng.view.pulltorefresh.library.CustomLoadingLayout3;
 import com.bu.zheng.view.pulltorefresh.library.FlipLoadingLayout;
 import com.bu.zheng.view.pulltorefresh.library.ILoadingLayout;
 import com.bu.zheng.view.pulltorefresh.library.IPullToRefresh;
@@ -577,9 +578,8 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     }
 
     protected LoadingLayout createLoadingLayout(Context context, Mode mode, TypedArray attrs) {
-        //LoadingLayout layout = new ComicLoadingLayout(context, mode, getPullToRefreshScrollDirection(), attrs);
-        //LoadingLayout layout = new ComicLoadingLayout3(context, mode, getPullToRefreshScrollDirection(), attrs);
-        LoadingLayout layout = new FlipLoadingLayout(context, mode, getPullToRefreshScrollDirection(), attrs);
+        //LoadingLayout layout = new FlipLoadingLayout(context, mode, getPullToRefreshScrollDirection(), attrs);
+        LoadingLayout layout = new CustomLoadingLayout3(context, mode, getPullToRefreshScrollDirection(), attrs);
         layout.setVisibility(View.INVISIBLE);
         return layout;
     }
@@ -1023,6 +1023,9 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
                 case PULL_FROM_START:
                 default:
                     mHeaderLayout.onPull(scale);
+                    if (mOnPullListener != null) {
+                        mOnPullListener.onScaleOfLayout(scale);
+                    }
                     break;
             }
 
@@ -1189,5 +1192,15 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
     interface OnSmoothScrollFinishedListener {
         void onSmoothScrollFinished();
+    }
+
+    public interface OnPullListener {
+        void onScaleOfLayout(float scaleOfLayout);
+    }
+
+    private OnPullListener mOnPullListener;
+
+    public void setOnPullListener(OnPullListener listener) {
+        this.mOnPullListener = listener;
     }
 }

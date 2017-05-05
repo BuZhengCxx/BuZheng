@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bu.zheng.R;
+import com.bu.zheng.util.AndroidUtil;
 import com.bu.zheng.util.DataUtil;
 import com.bu.zheng.view.adapter.SimpleRecyclerAdapter;
 import com.bu.zheng.view.pulltorefresh.common.PullLinearLayoutManager;
@@ -39,13 +40,15 @@ public class PullToRefreshActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        AndroidUtil.transparentStatusBar(this);
+
         setContentView(R.layout.activity_pull_to_refresh_layout);
 
         initViews();
     }
 
     private void initViews() {
-        mData = DataUtil.getStringListData(0, 0);
+        mData = DataUtil.getStringListData(20, 0);
 
         mTitleBack = (ImageView) findViewById(R.id.title_back);
         mTitleLeft = (TextView) findViewById(R.id.title_left);

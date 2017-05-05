@@ -9,7 +9,8 @@
         <RelativeLayout
             android:id="@+id/banner_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
             <ImageView
                 android:id="@+id/pull_to_refresh_image_2"
@@ -32,8 +33,8 @@
             android:id="@+id/pull_to_refresh_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="15dp"
             android:src="@drawable/img_pull1" />
     </RelativeLayout>
 </merge>

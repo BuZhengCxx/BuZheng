@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -18,16 +19,16 @@ import com.bu.zheng.view.pulltorefresh.common.Orientation;
 /**
  * Created by chenxiaoxiong on 16/7/8.
  */
-public class ComicLoadingLayout3 extends LoadingLayout {
+public class CustomLoadingLayout3 extends LoadingLayout {
 
     private RelativeLayout mBannerLayout;
     private ImageView mBannerImage;
     private TextView mPullTip;
     private boolean mHasBanner;
 
-    public ComicLoadingLayout3(Context context, Mode mode,
-                               Orientation scrollDirection,
-                               TypedArray attrs) {
+    public CustomLoadingLayout3(Context context, Mode mode,
+                                Orientation scrollDirection,
+                                TypedArray attrs) {
         super(context, mode, scrollDirection, attrs);
     }
 
@@ -61,8 +62,6 @@ public class ComicLoadingLayout3 extends LoadingLayout {
     public void setHasBanner(boolean hasBanner, String url) {
         this.mHasBanner = hasBanner;
         if (!TextUtils.isEmpty(url)) {
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) mBannerLayout.getLayoutParams();
-            layoutParams.height = getResources().getDisplayMetrics().widthPixels * 9 / 21;
             //ImageDisplayer.display(mBannerImage, url, R.drawable.pub_imgempty_logo96);
         }
     }
@@ -89,7 +88,17 @@ public class ComicLoadingLayout3 extends LoadingLayout {
 
     @Override
     protected void onLoadingDrawableSet(Drawable imageDrawable) {
+        if (imageDrawable != null) {
+            ViewGroup.LayoutParams layoutParams = mInnerLayout.getLayoutParams();
+            if (mHasBanner) {
+                layoutParams.height = getResources().getDisplayMetrics().widthPixels * 9 / 21;
 
+            } else {
+                final int height = imageDrawable.getIntrinsicHeight();
+                layoutParams.height = height;
+            }
+            mInnerLayout.requestLayout();
+        }
     }
 
     @Override

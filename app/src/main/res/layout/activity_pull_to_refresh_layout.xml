@@ -1,20 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgcolor2"
-    android:orientation="vertical">
+    android:background="@color/bgcolor2">
 
     <include
+        android:id="@+id/top_title"
         layout="@layout/view_common_title_with_right_icon_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/common_top_title_height" />
+
+    <ImageView
+        android:id="@+id/back_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/top_title"
+        android:scaleType="fitXY"
+        android:src="@drawable/test1" />
 
     <com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/top_title"
         android:overScrollMode="never">
 
     </com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView>
-</LinearLayout>
+</RelativeLayout>
