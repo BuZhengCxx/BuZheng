@@ -140,6 +140,8 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
             mOverScrollEnabled = a.getBoolean(R.styleable.PullToRefresh_ptrOverScroll, true);
         }
 
+        mOverScrollEnabled = true;
+
         if (a.hasValue(R.styleable.PullToRefresh_ptrScrollingWhileRefreshingEnabled)) {
             mScrollingWhileRefreshingEnabled = a.getBoolean(R.styleable.PullToRefresh_ptrScrollingWhileRefreshingEnabled, false);
         }
@@ -357,24 +359,6 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
     }
 
     @Override
-    public final void onRefreshComplete() {
-        if (isRefreshing()) {
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    setState(State.RESET);
-                }
-            }, mHeaderLayout.refreshComplete());
-        }
-    }
-
-    public final void onNoNetworkComplete() {
-        if (mState == State.MANUAL_REFRESHING || mState == State.REFRESHING || mState == State.RELEASE_TO_REFRESH) {
-            setState(State.RESET);
-        }
-    }
-
-    @Override
     public final boolean onTouchEvent(MotionEvent event) {
         if (!isPullToRefreshEnabled()) {
             return false;
@@ -458,6 +442,25 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         }
 
         return false;
+    }
+
+
+    @Override
+    public final void onRefreshComplete() {
+        if (isRefreshing()) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    setState(State.RESET);
+                }
+            }, mHeaderLayout.refreshComplete());
+        }
+    }
+
+    public final void onNoNetworkComplete() {
+        if (mState == State.MANUAL_REFRESHING || mState == State.REFRESHING || mState == State.RELEASE_TO_REFRESH) {
+            setState(State.RESET);
+        }
     }
 
     @Override
@@ -983,6 +986,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      * @return true if the Event has been handled, false if there has been no change
      */
     private void pullEvent() {
+
         final int newScrollValue;
         final int itemDimension;
         final float initialMotionValue, lastMotionValue;

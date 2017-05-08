@@ -50,7 +50,17 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.PullToRefreshActivity"
+            android:name=".activity.PullToRefreshDemosActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PullToRefreshRecyclerViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".activity.PullToRefreshScrollViewActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
 

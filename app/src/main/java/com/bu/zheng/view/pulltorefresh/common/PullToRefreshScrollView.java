@@ -60,7 +60,7 @@ public class PullToRefreshScrollView extends PullToRefreshBase<LoadMoreScrollVie
     @Override
     protected boolean isReadyForPullEnd() {
         View scrollViewChild = mRefreshableView.getChildAt(0);
-        if (null != scrollViewChild) {
+        if (scrollViewChild != null) {
             return mRefreshableView.getScrollY() >= (scrollViewChild.getHeight() - getHeight());
         }
         return false;

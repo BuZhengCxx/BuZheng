@@ -13,25 +13,23 @@ import android.widget.TextView;
 
 import com.bu.zheng.R;
 import com.bu.zheng.util.AndroidUtil;
+import com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView;
+import com.bu.zheng.view.pulltorefresh.common.PullToRefreshScrollView;
 
 /**
- * Created by BuZheng on 2017/3/17.
+ * Created by BuZheng on 2017/5/8.
  */
 
-public class DemoListActivity extends BaseActivity {
+public class PullToRefreshDemosActivity extends BaseActivity {
 
-    static final String[] mListItems = {
-            "RichText",
-            "OverScrollListView",
-            "PullToRefreshDemos",
-            "VideoAutoPlayList"
+    static final String[] mPullDemos = {
+            "PullToRefreshRecyclerView",
+            "PullToRefreshScrollView"
     };
 
-    static final Class<?>[] mActvities = {
-            RichTextActivity.class,
-            OverScrollListActivity.class,
-            PullToRefreshDemosActivity.class,
-            VideoAutoPlayListActivity.class
+    static final Class<?>[] mPullActivitys = {
+            PullToRefreshRecyclerViewActivity.class,
+            PullToRefreshScrollViewActivity.class
     };
 
     private ImageView mTitleBack;
@@ -49,7 +47,7 @@ public class DemoListActivity extends BaseActivity {
 
         mTitleBack = (ImageView) findViewById(R.id.title_back);
         mTitleLeft = (TextView) findViewById(R.id.title_left);
-        mTitleLeft.setText("Demos");
+        mTitleLeft.setText("PullToRefreshDemos");
         mTitleBack.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -60,18 +58,17 @@ public class DemoListActivity extends BaseActivity {
 
         mListView = (ListView) this.findViewById(R.id.listview);
         mListView.setSelector(new BitmapDrawable(getResources()));
-        mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mListItems));
+        mListView.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mPullDemos));
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 int index = position - ((ListView) parent).getHeaderViewsCount();
-                if (index >= 0 && index < mActvities.length) {
-                    Intent intent = new Intent(DemoListActivity.this, mActvities[index]);
+                if (index >= 0 && index < mPullActivitys.length) {
+                    Intent intent = new Intent(PullToRefreshDemosActivity.this, mPullActivitys[index]);
                     startActivity(intent);
                 }
             }
         });
-
     }
 }

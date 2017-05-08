@@ -24,14 +24,14 @@ public class LoadMoreScrollView extends ScrollView {
     @Override
     protected void onOverScrolled(int scrollX, int scrollY, boolean clampedX, boolean clampedY) {
 
-        if(mOnLastVisibleListener != null && scrollY != 0 && clampedY){
+        if (mOnLastVisibleListener != null && scrollY != 0 && clampedY) {
             mOnLastVisibleListener.onLostItemVisible();
         }
         super.onOverScrolled(scrollX, scrollY, clampedX, clampedY);
     }
 
     public interface OnLastVisibleListener {
-        public void onLostItemVisible();
+        void onLostItemVisible();
     }
 
     private OnLastVisibleListener mOnLastVisibleListener;

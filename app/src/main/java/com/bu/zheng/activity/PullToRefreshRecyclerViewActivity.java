@@ -24,7 +24,7 @@ import java.util.List;
  * Created by BuZheng on 2017/4/27.
  */
 
-public class PullToRefreshActivity extends BaseActivity {
+public class PullToRefreshRecyclerViewActivity extends BaseActivity {
 
     private ImageView mTitleBack;
     private TextView mTitleLeft;
@@ -42,13 +42,13 @@ public class PullToRefreshActivity extends BaseActivity {
 
         AndroidUtil.transparentStatusBar(this);
 
-        setContentView(R.layout.activity_pull_to_refresh_layout);
+        setContentView(R.layout.activity_pull_to_refresh_recyclerview_layout);
 
         initViews();
     }
 
     private void initViews() {
-        mData = DataUtil.getStringListData(20, 0);
+        mData = DataUtil.getStringListData(40, 0);
 
         mTitleBack = (ImageView) findViewById(R.id.title_back);
         mTitleLeft = (TextView) findViewById(R.id.title_left);
