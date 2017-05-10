@@ -33,7 +33,7 @@ public class PullToRefreshScrollViewActivity extends BaseActivity {
     private void initViews() {
         mTitleBack = (ImageView) findViewById(R.id.title_back);
         mTitleLeft = (TextView) findViewById(R.id.title_left);
-        mTitleLeft.setText("PullToRefresh");
+        mTitleLeft.setText("PullToRefreshScrollView");
         mTitleBack.setOnClickListener(mOnClickListener);
         mTitleRight = (ImageView) findViewById(R.id.title_right);
         mTitleRight.setOnClickListener(mOnClickListener);

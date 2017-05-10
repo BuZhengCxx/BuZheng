@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bgcolor2"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/view_common_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/common_top_title_height" />
+
+    <com.bu.zheng.view.MyScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bg_color_0db5af"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="test"
+                android:textColor="@color/txtcolor2"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:gravity="center"
+                android:text="test"
+                android:textColor="@color/txtcolor2"
+                android:textSize="24sp" />
+        </LinearLayout>
+
+    </com.bu.zheng.view.MyScrollView>
+
+    <com.bu.zheng.view.CustomView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:background="@color/bgcolor1" />
+</LinearLayout>

@@ -13,8 +13,6 @@ import android.widget.TextView;
 
 import com.bu.zheng.R;
 import com.bu.zheng.util.AndroidUtil;
-import com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView;
-import com.bu.zheng.view.pulltorefresh.common.PullToRefreshScrollView;
 
 /**
  * Created by BuZheng on 2017/5/8.
@@ -24,12 +22,14 @@ public class PullToRefreshDemosActivity extends BaseActivity {
 
     static final String[] mPullDemos = {
             "PullToRefreshRecyclerView",
-            "PullToRefreshScrollView"
+            "PullToRefreshScrollView",
+            "MyScrollView"
     };
 
     static final Class<?>[] mPullActivitys = {
             PullToRefreshRecyclerViewActivity.class,
-            PullToRefreshScrollViewActivity.class
+            PullToRefreshScrollViewActivity.class,
+            MyScrollViewActivity.class
     };
 
     private ImageView mTitleBack;

@@ -52,7 +52,7 @@ public class PullToRefreshRecyclerViewActivity extends BaseActivity {
 
         mTitleBack = (ImageView) findViewById(R.id.title_back);
         mTitleLeft = (TextView) findViewById(R.id.title_left);
-        mTitleLeft.setText("PullToRefresh");
+        mTitleLeft.setText("PullToRefreshRecyclerView");
         mTitleBack.setOnClickListener(mOnClickListener);
         mTitleRight = (ImageView) findViewById(R.id.title_right);
         mTitleRight.setOnClickListener(mOnClickListener);
