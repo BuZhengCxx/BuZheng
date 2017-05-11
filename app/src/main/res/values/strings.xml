@@ -17,4 +17,7 @@
 
     <!--RichText-->
     <string name="rich_text_test_str1">我的等级是[vip1]，标签1#漫画日本之旅#标签2#测试多个标签#的情况</string>
+
+    <!--log test-->
+    <string name="log_test_str1">测试带参数log日志,参数是%s</string>
 </resources>
