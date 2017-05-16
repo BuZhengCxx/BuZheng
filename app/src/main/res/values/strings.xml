@@ -20,4 +20,5 @@
 
     <!--log test-->
     <string name="log_test_str1">测试带参数log日志,参数是%s</string>
+    <string name="log_h_user_agent">Android/%1$s/%2$s;\n%3$s;\nandroid;%6$s;%7$s)(%8$s)</string>
 </resources>

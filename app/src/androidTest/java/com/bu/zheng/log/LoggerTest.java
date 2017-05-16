@@ -22,7 +22,9 @@ public class LoggerTest {
     @Test
     public void d() throws Exception {
         Context appContext = InstrumentationRegistry.getTargetContext();
-        Logger.d(appContext.getString(R.string.log_test_str1), "log");
+        Logger.d("Topic",
+                "TopicDetailActivity",
+                String.format(appContext.getString(R.string.log_test_str1), "topic data return"));
     }
 
 }

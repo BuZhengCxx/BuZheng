@@ -1,7 +1,13 @@
 package com.bu.zheng.log;
 
+import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
+
+import com.bu.zheng.app.BuZhengApp;
+import com.bu.zheng.util.PlatformUtil;
+
+import java.util.Calendar;
 
 /**
  * Created by BuZheng on 2017/5/10.
@@ -27,6 +33,9 @@ public class LogPrinter {
     private final ThreadLocal<Integer> localMethodCount = new ThreadLocal<>();
 
 
+    private static final String APP_START = "************************************************************************************************";
+    private static final char APP_START_LEFT = '*';
+
     private static final char TOP_LEFT_CORNER = '╔';
     private static final char BOTTOM_LEFT_CORNER = '╚';
     private static final char MIDDLE_CORNER = '╟';
@@ -40,6 +49,35 @@ public class LogPrinter {
 
     private static final int MIN_STACK_OFFSET = 3;
 
+    private static Calendar mDate = Calendar.getInstance();
+    private static StringBuffer mBuffer = new StringBuffer();
+
+    /**
+     * 组成Log字符串.添加时间信息.
+     */
+    private static String getLogStr() {
+
+        mDate.setTimeInMillis(System.currentTimeMillis());
+
+        mBuffer.setLength(0);
+        mBuffer.append("[");
+        mBuffer.append(mDate.get(Calendar.MONTH) + 1);
+        mBuffer.append("-");
+        mBuffer.append(mDate.get(Calendar.DATE));
+        mBuffer.append(" ");
+        mBuffer.append(mDate.get(Calendar.HOUR_OF_DAY));
+        mBuffer.append(":");
+        mBuffer.append(mDate.get(Calendar.MINUTE));
+        mBuffer.append(":");
+        mBuffer.append(mDate.get(Calendar.SECOND));
+        mBuffer.append(":");
+        mBuffer.append(mDate.get(Calendar.MILLISECOND));
+        mBuffer.append("]");
+
+        return mBuffer.toString();
+    }
+
+
     public LogPrinter() {
 
     }
@@ -52,24 +90,59 @@ public class LogPrinter {
     }
 
     /**
+     * App Start
+     */
+    public void logAppStart() {
+        logChunk(LogLevel.DEBUG, null, APP_START);
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Time: " + getLogStr());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Module: " + "Start");
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Account: " + getAccountInfo());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Device: " + PlatformUtil.getMobileName());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " NetWork: " + PlatformUtil.getMobileType(BuZhengApp.instance()));
+        logChunk(LogLevel.DEBUG, null, APP_START);
+    }
+
+    /**
+     * App Exit
+     */
+    public void logAppExit() {
+        logChunk(LogLevel.DEBUG, null, APP_START);
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Time: " + getLogStr());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Module: " + "Exit");
+        logChunk(LogLevel.DEBUG, null, APP_START);
+    }
+
+    /**
      * DEBUG LOG
      *
-     * @param msg
-     * @param args
+     * @param moduleName
+     * @param message
      */
-    public void d(String msg, Object... args) {
-        String message = createMessage(msg, args);
-        log(LogLevel.DEBUG, null, null, message);
+    public void d(@NonNull String moduleName, String message) {
+        log(LogLevel.DEBUG, moduleName, null, null, message);
     }
 
-    public void d(String msg) {
-        log(LogLevel.DEBUG, null, null, msg);
+    /**
+     * ERROR LOG
+     *
+     * @param throwable
+     * @param moduleName
+     * @param message
+     */
+    public void e(@NonNull String moduleName, @NonNull Throwable throwable, String message) {
+        log(LogLevel.ERROR, moduleName, throwable, null, message);
     }
 
-    public synchronized void log(int logLevel, Throwable throwable, String tag, String message) {
+
+    public synchronized void log(int logLevel,
+                                 @NonNull String moduleName,
+                                 Throwable throwable,
+                                 String tag,
+                                 String message) {
 
         if (throwable != null && !TextUtils.isEmpty(message)) {
-            message += " : " + Log.getStackTraceString(throwable);
+            //message += " :\n " + Log.getStackTraceString(throwable);
+            message += " :\n " + throwable.toString();
         }
         if (throwable != null && TextUtils.isEmpty(message)) {
             message = Log.getStackTraceString(throwable);
@@ -77,21 +150,21 @@ public class LogPrinter {
         if (message == null) {
             message = "No message/exception is set";
         }
-        int methodCount = 0;
+        int methodCount = 3;
 
         if (TextUtils.isEmpty(message)) {
             message = "Empty/NULL log message";
         }
 
         logTopBorder(logLevel, tag);
-        logHeaderContent(logLevel, tag, methodCount);
+        logHeaderContent(logLevel, tag, methodCount, moduleName);
 
         if (methodCount > 0) {
             logDivider(logLevel, tag);
             logMessage(logLevel, tag, message);
 
         } else {
-            logMessage(logLevel,tag,message);
+            logMessage(logLevel, tag, message);
 
         }
         logBottomBorder(logLevel, tag);
@@ -101,10 +174,22 @@ public class LogPrinter {
         logChunk(logLevel, tag, TOP_BORDER);
     }
 
-    private void logHeaderContent(int logLevel, String tag, int methodCount) {
+    private void logHeaderContent(int logLevel, String tag, int methodCount, @NonNull String moduleName) {
 
         StackTraceElement[] trace = Thread.currentThread().getStackTrace();
-        logChunk(logLevel, tag, VERTICAL_DOUBLE_LINE + " Thread: " + Thread.currentThread().getName());
+        logChunk(logLevel, tag, VERTICAL_DOUBLE_LINE + " Time: " + getLogStr());
+        logDivider(logLevel, tag);
+
+        logChunk(logLevel, tag, VERTICAL_DOUBLE_LINE + " LogLevel: Error;" + " Thread: " + Thread.currentThread().getName());
+        logDivider(logLevel, tag);
+
+        logChunk(logLevel, tag, VERTICAL_DOUBLE_LINE + " Module: " + moduleName);
+        logDivider(logLevel, tag);
+
+        logChunk(logLevel, tag, VERTICAL_DOUBLE_LINE + " Transaction Info: [ Type:" + "打赏礼物；" + " ErrorCode: " + -61410 + "； ErrorString: " + "网络错误 ]");
+        logDivider(logLevel, tag);
+
+        logChunk(logLevel, tag, VERTICAL_DOUBLE_LINE + " NetWork: " + PlatformUtil.getMobileType(BuZhengApp.instance()));
         logDivider(logLevel, tag);
 
         String level = "";
@@ -122,7 +207,7 @@ public class LogPrinter {
                 continue;
             }
             StringBuilder builder = new StringBuilder();
-            builder.append("║ ")
+            builder.append(VERTICAL_DOUBLE_LINE).append(" ")
                     .append(level)
                     .append(getSimpleClassName(trace[stackIndex].getClassName()))
                     .append(".")
@@ -207,15 +292,6 @@ public class LogPrinter {
         return TAG;
     }
 
-    /**
-     * @param message
-     * @param args
-     * @return
-     */
-    private String createMessage(String message, Object... args) {
-        return args == null || args.length == 0 ? message : String.format(message, args);
-    }
-
     private String getSimpleClassName(String name) {
         int lastIndex = name.lastIndexOf(".");
         return name.substring(lastIndex + 1);
@@ -231,5 +307,9 @@ public class LogPrinter {
             }
         }
         return -1;
+    }
+
+    private static String getAccountInfo() {
+        return "test account";
     }
 }

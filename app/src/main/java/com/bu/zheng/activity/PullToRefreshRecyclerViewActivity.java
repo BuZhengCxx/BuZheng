@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bu.zheng.R;
+import com.bu.zheng.log.Logger;
 import com.bu.zheng.util.AndroidUtil;
 import com.bu.zheng.util.DataUtil;
 import com.bu.zheng.view.adapter.SimpleRecyclerAdapter;
@@ -62,12 +63,17 @@ public class PullToRefreshRecyclerViewActivity extends BaseActivity {
     }
 
     private void initRecyclerView() {
-        PullLinearLayoutManager layoutManager = new PullLinearLayoutManager(this, mRecyclerView.getRefreshableView());
-        mRecyclerView.setLayoutManager(layoutManager);
-        mRecyclerView.getRefreshableView().addItemDecoration(new DividerItemDecorator());
-        mAdapter = new SimpleRecyclerAdapter(this, mData);
-        mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.onRefreshComplete(false);
+        try {
+            PullLinearLayoutManager layoutManager = new PullLinearLayoutManager(this, mRecyclerView.getRefreshableView());
+            mRecyclerView.setLayoutManager(layoutManager);
+            mRecyclerView.getRefreshableView().addItemDecoration(new DividerItemDecorator());
+            mAdapter = new SimpleRecyclerAdapter(this, mData);
+            mRecyclerView.setAdapter(mAdapter);
+            mRecyclerView.onRefreshComplete(false);
+
+        } catch (Exception e) {
+            Logger.e("Topic", e, "这是一条异常日志");
+        }
     }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
@@ -81,6 +87,9 @@ public class PullToRefreshRecyclerViewActivity extends BaseActivity {
 
                 case R.id.title_right:
                     mRecyclerView.autoFresh();
+                    //Logger.d("Topic", "这是日志message");
+                    //Logger.logAppStart();
+                    Logger.logAppExit();
                     break;
             }
         }
