@@ -71,7 +71,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".activity.VideoAutoPlayListActivity"
+            android:name=".activity.CoordinatorLayoutActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait" />
 

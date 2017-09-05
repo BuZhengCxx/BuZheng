@@ -37,6 +37,5 @@ public class MyScrollViewActivity extends BaseActivity {
                 finish();
             }
         });
-
     }
 }

@@ -700,7 +700,14 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
                         break;
                     default:
                     case PULL_FROM_START:
-                        smoothScrollTo(-getHeaderSize());
+                        if (mHeaderLayout != null && mHeaderLayout instanceof CustomLoadingLayout3) {
+                            int pullState = ((CustomLoadingLayout3) mHeaderLayout).getPullState();
+                            if (pullState == 3) {
+                                smoothScrollToBottom();
+                            }
+                        } else {
+                            smoothScrollTo(-getHeaderSize());
+                        }
                         break;
                 }
             } else {
@@ -726,14 +733,30 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         mIsBeingDragged = false;
         mLayoutVisibilityChangesEnabled = true;
 
-        // Always reset both layouts, just in case...
-        smoothScrollTo(0, getPullToRefreshScrollDuration(), 0, new OnSmoothScrollFinishedListener() {
-            @Override
-            public void onSmoothScrollFinished() {
-                mHeaderLayout.reset();
-                mFooterLayout.reset();
+        if (mHeaderLayout != null && mHeaderLayout instanceof CustomLoadingLayout3) {
+            int pullState = ((CustomLoadingLayout3) mHeaderLayout).getPullState();
+            if (pullState == 3) {
+                smoothScrollToBottom();
+            }else{
+                // Always reset both layouts, just in case...
+                smoothScrollTo(0, getPullToRefreshScrollDuration(), 0, new OnSmoothScrollFinishedListener() {
+                    @Override
+                    public void onSmoothScrollFinished() {
+                        mHeaderLayout.reset();
+                        mFooterLayout.reset();
+                    }
+                });
             }
-        });
+        } else {
+            // Always reset both layouts, just in case...
+            smoothScrollTo(0, getPullToRefreshScrollDuration(), 0, new OnSmoothScrollFinishedListener() {
+                @Override
+                public void onSmoothScrollFinished() {
+                    mHeaderLayout.reset();
+                    mFooterLayout.reset();
+                }
+            });
+        }
     }
 
     @Override
@@ -811,7 +834,7 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
      * Re-measure the Loading Views height, and adjust internal padding as necessary
      */
     protected final void refreshLoadingViewsSize() {
-        final int maximumPullScroll = (int) (getMaximumPullScroll() * 1.2f);
+        final int maximumPullScroll = getMaximumPullScroll();
 
         int paddingLeft = getPaddingLeft();
         int paddingTop = getPaddingTop();
@@ -1062,6 +1085,13 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
         }
     }
 
+    /**
+     * scroll to bottom
+     */
+    public void smoothScrollToBottom() {
+        smoothScrollTo(-(getHeight() + getMaximumPullScroll()), 300);
+    }
+
     private final void smoothScrollTo(int newScrollValue, long duration) {
         smoothScrollTo(newScrollValue, duration, 0, null);
     }
@@ -1206,5 +1236,11 @@ public abstract class PullToRefreshBase<T extends View> extends LinearLayout imp
 
     public void setOnPullListener(OnPullListener listener) {
         this.mOnPullListener = listener;
+    }
+
+    public void setBanner(String url) {
+        if (mHeaderLayout != null && mHeaderLayout instanceof CustomLoadingLayout3) {
+            ((CustomLoadingLayout3) mHeaderLayout).setBanner(null);
+        }
     }
 }

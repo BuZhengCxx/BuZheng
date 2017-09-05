@@ -45,4 +45,12 @@ public class Logger {
         printer.e(moduleName, throwable, message);
     }
 
+    public static void logChangeAccount(){
+        printer.logChangeAccount();
+    }
+
+    public static void logDebug(){
+        printer.logDebug();
+    }
+
 }

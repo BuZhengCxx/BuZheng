@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,11 +58,13 @@ public class CustomLoadingLayout3 extends LoadingLayout {
         setLoadingDrawable(imageDrawable);
     }
 
-    public void setHasBanner(boolean hasBanner, String url) {
-        this.mHasBanner = hasBanner;
-        if (!TextUtils.isEmpty(url)) {
-            //ImageDisplayer.display(mBannerImage, url, R.drawable.pub_imgempty_logo96);
-        }
+    public void setBanner(String url) {
+        this.mHasBanner = true;
+        //if (!TextUtils.isEmpty(url)) {
+        ViewGroup.LayoutParams layoutParams = mInnerLayout.getLayoutParams();
+        layoutParams.height = getResources().getDisplayMetrics().widthPixels * 9 / 16;
+        mInnerLayout.requestLayout();
+        //}
     }
 
     private void initBanner() {
@@ -90,20 +91,33 @@ public class CustomLoadingLayout3 extends LoadingLayout {
     protected void onLoadingDrawableSet(Drawable imageDrawable) {
         if (imageDrawable != null) {
             ViewGroup.LayoutParams layoutParams = mInnerLayout.getLayoutParams();
-            if (mHasBanner) {
-                layoutParams.height = getResources().getDisplayMetrics().widthPixels * 9 / 21;
-
-            } else {
-                final int height = imageDrawable.getIntrinsicHeight();
-                layoutParams.height = height;
-            }
+            layoutParams.height = imageDrawable.getIntrinsicHeight();
             mInnerLayout.requestLayout();
         }
     }
 
+    private int mPullState;
+
     @Override
     protected void onPullImpl(float scaleOfLayout) {
+        if (scaleOfLayout > 0 && mPullTip != null) {
+            if (scaleOfLayout > 0.7f) {
+                mPullTip.setText("有彩蛋呐 ╰(*°▽°*)╯快放开我吧~");
+                mPullState = 3;
 
+            } else if (scaleOfLayout > 0.4f) {
+                mPullTip.setText("可以刷新啦快放开我~");
+                mPullState = 2;
+
+            } else {
+                mPullTip.setText("拉我刷新呀~");
+                mPullState = 1;
+            }
+        }
+    }
+
+    public int getPullState() {
+        return mPullState;
     }
 
     @Override

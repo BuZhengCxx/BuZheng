@@ -95,12 +95,25 @@ public class LogPrinter {
     public void logAppStart() {
         logChunk(LogLevel.DEBUG, null, APP_START);
         logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Time: " + getLogStr());
-        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Module: " + "Start");
         logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Account: " + getAccountInfo());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Version: " + "2.7.0");
         logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Device: " + PlatformUtil.getMobileName());
         logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " NetWork: " + PlatformUtil.getMobileType(BuZhengApp.instance()));
         logChunk(LogLevel.DEBUG, null, APP_START);
     }
+
+    public void logChangeAccount() {
+        logChunk(LogLevel.DEBUG, null, "**********************************************");
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Time: " + getLogStr());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Account: " + getAccountInfo());
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " 登录方式: " + "微信");
+        logChunk(LogLevel.DEBUG, null, "**********************************************");
+    }
+
+    public void logDebug() {
+        System.out.println("<D> " + getLogStr() + " [ComicDetailActivity]" + " " + "漫画目录信息获取成功");
+    }
+
 
     /**
      * App Exit
@@ -108,7 +121,7 @@ public class LogPrinter {
     public void logAppExit() {
         logChunk(LogLevel.DEBUG, null, APP_START);
         logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Time: " + getLogStr());
-        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " Module: " + "Exit");
+        logChunk(LogLevel.DEBUG, null, APP_START_LEFT + " " + "Exit");
         logChunk(LogLevel.DEBUG, null, APP_START);
     }
 

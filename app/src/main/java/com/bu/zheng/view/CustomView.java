@@ -21,30 +21,24 @@ public class CustomView extends View {
 //        int height = measureDimension(100, heightMeasureSpec);
 //        setMeasuredDimension(width, height);
 //    }
-//
-//    private int measureDimension(int defauleSize, int measureSpec) {
-//        int result = 0;
-//        final int mode = MeasureSpec.getMode(measureSpec);
-//        int size = MeasureSpec.getSize(measureSpec);
-//        switch (mode){
-//            case MeasureSpec.EXACTLY:
-//                result = size;
-//                break;
-//
-//            case MeasureSpec.AT_MOST:
-//                result = defauleSize;
-//                break;
-//
-//            case MeasureSpec.UNSPECIFIED:
-//                break;
-//        }
-//        return result;
-//    }
 
+    private int measureDimension(int defauleSize, int measureSpec) {
+        int result = 0;
+        final int mode = MeasureSpec.getMode(measureSpec);
+        int size = MeasureSpec.getSize(measureSpec);
+        switch (mode){
+            case MeasureSpec.EXACTLY:
+                result = 100;
+                break;
 
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+            case MeasureSpec.AT_MOST:
+                result = defauleSize;
+                break;
 
+            case MeasureSpec.UNSPECIFIED:
+                break;
+        }
+        return result;
     }
+
 }

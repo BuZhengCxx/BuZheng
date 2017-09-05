@@ -10,7 +10,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.bu.zheng.R;
 import com.bu.zheng.util.AndroidUtil;
 
@@ -24,19 +23,18 @@ public class DemoListActivity extends BaseActivity {
             "RichText",
             "OverScrollListView",
             "PullToRefreshDemos",
-            "VideoAutoPlayList"
+            "CoordinatorLayout"
     };
 
     static final Class<?>[] mActvities = {
             RichTextActivity.class,
             OverScrollListActivity.class,
             PullToRefreshDemosActivity.class,
-            VideoAutoPlayListActivity.class
+            CoordinatorLayoutActivity.class,
     };
 
     private ImageView mTitleBack;
     private TextView mTitleLeft;
-
     private ListView mListView;
 
     @Override

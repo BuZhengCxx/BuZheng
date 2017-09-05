@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/top_title"
-        android:scaleType="fitXY"
-        android:src="@drawable/test1" />
+        android:scaleType="fitXY" />
 
     <com.bu.zheng.view.pulltorefresh.common.PullToRefreshRecyclerView
         android:id="@+id/recyclerview"
