@@ -24,8 +24,6 @@ public abstract class BaseActivity extends Activity {
 
     private LayoutInflater mLayoutInflater;
 
-    private String mTestTag;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
 
